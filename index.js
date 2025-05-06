@@ -8,17 +8,17 @@ const browser = detect()
 /**
  * API client
  */
-const KEYRIX_ACCOUNT_ID = process.env['KEYRIX_ACCOUNT_ID']
+const LICENSEGEN_ACCOUNT_ID = process.env['LICENSEGEN_ACCOUNT_ID']
 
-if (!KEYRIX_ACCOUNT_ID) {
-  throw Error('environment variable KEYRIX_ACCOUNT_ID is required')
+if (!LICENSEGEN_ACCOUNT_ID) {
+  throw Error('environment variable LICENSEGEN_ACCOUNT_ID is required')
 }
 
 const client = {
-  KEYRIX_ACCOUNT_ID,
+  LICENSEGEN_ACCOUNT_ID,
 
   async validateLicenseKeyWithFingerprint(key, fingerprint) {
-    const res = await fetch(`https://keyrix-api.focusapps.app/v1/accounts/${KEYRIX_ACCOUNT_ID}/licenses/actions/validate-key`, {
+    const res = await fetch(`https://licensegen-api.focusapps.app/v1/accounts/${LICENSEGEN_ACCOUNT_ID}/licenses/actions/validate-key`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -42,7 +42,7 @@ const client = {
   },
 
   async activateMachineForLicense(license, fingerprint, name, platform, browser, version) {
-    const res = await fetch(`https://keyrix-api.focusapps.app/v1/accounts/${KEYRIX_ACCOUNT_ID}/machines`, {
+    const res = await fetch(`https://licensegen-api.focusapps.app/v1/accounts/${LICENSEGEN_ACCOUNT_ID}/machines`, {
       method: 'POST',
       headers: {
         'Authorization': `License ${license.attributes.key}`,
@@ -77,7 +77,7 @@ const client = {
   },
 
   async deactivateMachineForLicense(license, id) {
-    const res = await fetch(`https://keyrix-api.focusapps.app/v1/accounts/${KEYRIX_ACCOUNT_ID}/machines/${id}`, {
+    const res = await fetch(`https://licensegen-api.focusapps.app/v1/accounts/${LICENSEGEN_ACCOUNT_ID}/machines/${id}`, {
       method: 'DELETE',
       headers: {
         'Authorization': `License ${license.attributes.key}`,
@@ -97,7 +97,7 @@ const client = {
   },
 
   async listMachinesForLicense(license) {
-    const res = await fetch(`https://keyrix-api.focusapps.app/v1/accounts/${KEYRIX_ACCOUNT_ID}/machines`, {
+    const res = await fetch(`https://licensegen-api.focusapps.app/v1/accounts/${LICENSEGEN_ACCOUNT_ID}/machines`, {
       method: 'GET',
       headers: {
         'Authorization': `License ${license.attributes.key}`,
@@ -165,7 +165,7 @@ const getDeviceId = () => {
 
 const useLicensingStore = createStore((set, get) => ({
   fingerprint: getDeviceId(),
-  key: '7F3DEE-75AFF5-61E976-3AF1EA-4A2013-V3',
+  key: '80246B-1DE0D3-B22291-00B387-B9C4DD-V3',
   validation: null,
   license: null,
   machines: [],

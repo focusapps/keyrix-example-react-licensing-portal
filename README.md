@@ -1,7 +1,7 @@
 # Example Licensing Portal
 
 This is an example of how to set up a simple customer-facing license activation
-portal using Keyrix's API and React.
+portal using LicenseGen's API and React.
 
 ![screenshot](/images/License-portal.png)
 
@@ -16,8 +16,8 @@ The portal offers the following functionality:
 First up, configure a few environment variables:
 
 ```bash
-# Your Keyrix account ID. Find yours at https://keyrix-admin.focusapps.app/settings.
-export KEYRIX_ACCOUNT_ID="e97d0572-de1c-42ae-93dd-501bf839ec38"
+# Your LicenseGen account ID. Find yours at https://licensegen-admin.focusapps.app/settings.
+export LICENSEGEN_ACCOUNT_ID="2ed45aa2-b1e9-4ba7-83bb-a037ccf5a85e"
 ```
 
 You can either run each line above within your terminal session before
@@ -43,18 +43,18 @@ The app will be available at `http://localhost:1234`.
 To run on the `demo` account, run the following:
 
 ```bash
-KEYRIX_ACCOUNT_ID=demo yarn start
+LICENSEGEN_ACCOUNT_ID=demo yarn start
 ```
 
 Then input the following demo license key:
 
 ```
-7F3DEE-75AFF5-61E976-3AF1EA-4A2013-V3
+80246B-1DE0D3-B22291-00B387-B9C4DD-V3
 ```
 
 ## License key authorization
 
-Used `License key authorization` in this case，you have to set `Authentication Strategy` of [`police`](https://keyrix-admin.focusapps.app/policies)  to `MIXED` or `License Keys`
+Used `License key authorization` in this case，you have to set `Authentication Strategy` of [`police`](https://licensegen-admin.focusapps.app/policies)  to `MIXED` or `License Keys`
 
 
 ## Fingerprinting
@@ -73,5 +73,5 @@ This will allow you to test activation limits more easily.
 
 ## Questions?
 
-Reach out at [keyrix@focusapps.app](mailto:keyrix@focusapps.app) if you have any
+Reach out at [licensegen@focusapps.app](mailto:licensegen@focusapps.app) if you have any
 questions or concerns!
