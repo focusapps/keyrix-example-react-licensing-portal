@@ -267,7 +267,7 @@ const useDeviceInfoStore = createStore(() => ({
   platform: browser.os ?? window.navigator.platform,
   version: browser.version ?? window.navigator.appVersion,
   browser: browser.name ?? window.navigator.userAgent,
-  name: `Demo Device ${uuidv4().substring(0, 5)}`,
+  name: `Device ${uuidv4().substring(0, 5)}`,
 }))
 
 /**
