@@ -195,7 +195,7 @@ const useLicensingStore = createStore((set, get) => ({
     const { errors } = await client.activateMachineForLicense(license, fingerprint, name, platform, browser, version)
     if (errors) {
       // List machines to give the user the option to free up activation slots
-      client.listMachinesForLicense()
+      client.listMachinesForLicense(license)
 
       return set(state => ({ ...state, errors }))
     }
