@@ -18,6 +18,7 @@ First up, configure a few environment variables:
 ```bash
 # Your LicenseGen account ID. Find yours at https://licensegen-admin.focusapps.app/settings.
 export LICENSEGEN_ACCOUNT_ID="2ed45aa2-b1e9-4ba7-83bb-a037ccf5a85e"
+export LICENSEGEN_LICENSE_KEY="80246B-1DE0D3-B22291-00B387-B9C4DD-V3"
 ```
 
 You can either run each line above within your terminal session before
@@ -43,19 +44,12 @@ The app will be available at `http://localhost:1234`.
 To run on the `demo` account, run the following:
 
 ```bash
-LICENSEGEN_ACCOUNT_ID=demo yarn start
-```
-
-Then input the following demo license key:
-
-```
-80246B-1DE0D3-B22291-00B387-B9C4DD-V3
+LICENSEGEN_ACCOUNT_ID=demo LICENSEGEN_LICENSE_KEY="80246B-1DE0D3-B22291-00B387-B9C4DD-V3" yarn start
 ```
 
 ## License key authorization
 
 Used `License key authorization` in this case，you have to set `Authentication Strategy` of [`police`](https://licensegen-admin.focusapps.app/policies)  to `MIXED` or `License Keys`
-
 
 ## Fingerprinting
 

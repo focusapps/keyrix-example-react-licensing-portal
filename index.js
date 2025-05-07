@@ -8,11 +8,14 @@ const browser = detect()
 /**
  * API client
  */
-const LICENSEGEN_ACCOUNT_ID = process.env['LICENSEGEN_ACCOUNT_ID']
+const LICENSEGEN_ACCOUNT_ID = process.env['LICENSEGEN_ACCOUNT_ID'] || 
+  window.location.pathname.split('/').filter(Boolean).pop()
 
 if (!LICENSEGEN_ACCOUNT_ID) {
   throw Error('environment variable LICENSEGEN_ACCOUNT_ID is required')
 }
+
+const LICENSEGEN_LICENSE_KEY = process.env['LICENSEGEN_LICENSE_KEY']
 
 const client = {
   LICENSEGEN_ACCOUNT_ID,
@@ -165,7 +168,7 @@ const getDeviceId = () => {
 
 const useLicensingStore = createStore((set, get) => ({
   fingerprint: getDeviceId(),
-  key: '80246B-1DE0D3-B22291-00B387-B9C4DD-V3',
+  key: LICENSEGEN_LICENSE_KEY,
   validation: null,
   license: null,
   machines: [],
@@ -515,7 +518,7 @@ const LicenseValidator = () => {
   return (
     <div className='demo-component'>
       <h2>
-        <small>License Portal Demo</small>
+        <small>License Portal</small>
         Please enter a license key
       </h2>
       <LicenseKeyInput value={key} onChange={setKey} onSubmit={validateLicenseKeyAction} />
@@ -528,7 +531,7 @@ const LicenseActivationPortal = () => {
 
   if (errors?.length) {
     return (
-      <div className='demo' data-title='Demo App'>
+      <div className='demo' data-title='License Portal App'>
         <LicenseErrors />
         <LicenseInfo />
         {errors.some(e => e.code === 'MACHINE_LIMIT_EXCEEDED')
@@ -540,7 +543,7 @@ const LicenseActivationPortal = () => {
 
   if (license == null && validation == null) {
     return (
-      <div className='demo' data-title='Demo App'>
+      <div className='demo' data-title='License Portal App'>
         <LicenseValidator />
       </div>
     )
@@ -548,7 +551,7 @@ const LicenseActivationPortal = () => {
 
   if (validation?.valid) {
     return (
-      <div className='demo' data-title='Demo App'>
+      <div className='demo' data-title='License Portal App'>
         <LicenseInfo />
         <LicenseManager />
       </div>
@@ -560,14 +563,14 @@ const LicenseActivationPortal = () => {
     case 'NO_MACHINES':
     case 'NO_MACHINE':
       return (
-        <div className='demo' data-title='Demo App'>
+        <div className='demo' data-title='License Portal App'>
           <LicenseInfo />
           <LicenseActivator />
         </div>
       )
     default:
       return (
-        <div className='demo' data-title='Demo App'>
+        <div className='demo' data-title='License Portal App'>
           <LicenseInfo />
         </div>
       )
